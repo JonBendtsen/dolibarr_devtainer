@@ -40,7 +40,7 @@ function create_dolibarr {
 		--env DOLI_DB_NAME="dolidb" \
 		--env DOLI_DB_USER="doliuser" \
 		--env DOLI_ADMIN_LOGIN="${DOLI_ADMIN_LOGIN}" \
-		--env DOLI_URL_ROOT="http://localhost/" \
+		--env DOLI_URL_ROOT="http://localhost:${PORTNUMBER_BASE}80/" \
 		--env DOLI_HTTPS="0" \
 		--env DOLI_NO_CSRF_CHECK="0" \
 		--env PHP_INI_DATE_TIMEZONE="${PHP_INI_DATE_TIMEZONE}" \
