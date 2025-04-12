@@ -11,10 +11,10 @@ function create_dolibarr {
 	CONTAINER_NAME="${DOLIBARR_BASENAME}_${VERSION}"
 	SECRET_DOLI_pass="${SECRET_DOLI_BASE}_${VERSION}"
 	IMAGE_VERSION=$( echo "${VERSION}" | cut -d"." -f1 )
-	if [[ "develop" == "${IMAGE_VERSION}" ]]; then
+	if [[ "develop" == "${VERSION}" ]]; then
 		PORTNUMBER_BASE=80
 	else
-		PORTNUMBER_BASE=$( echo "${IMAGE_VERSION}" | tr -c -d "[:digit:]" )
+		PORTNUMBER_BASE=$( echo "${VERSION}" | tr -c -d "[:digit:]" )
 	fi
 	if [[ "develop" == "${VERSION}" ]]; then
 		HTDOCS="${LOCAL_DOLIBARR_REPO}/htdocs"

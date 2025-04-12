@@ -8,5 +8,3 @@ for VERSION in ${ACTIVE_VERSIONS}; do
 	PODNAME="${POD_BASENAME}_${VERSION}"
 	podman pod start "${PODNAME}"
 done
-
-

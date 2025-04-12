@@ -5,13 +5,13 @@ set -o pipefail
 source local.config || ( echo "ERROR, create a local.config file from default.config" ; exit 1 )
 
 function create_pod {
-	IMAGE_VERSION=$1
-	if [[ "develop" == "${IMAGE_VERSION}" ]]; then
+	VERSION=$1
+	if [[ "develop" == "${VERSION}" ]]; then
 		PORTNUMBER_BASE=80
 	else
-		PORTNUMBER_BASE=$( echo "${IMAGE_VERSION}" | tr -c -d "[:digit:]" )
+		PORTNUMBER_BASE=$( echo "${VERSION}" | tr -c -d "[:digit:]" )
 	fi
-	PODNAME="${POD_BASENAME}_${IMAGE_VERSION}"
+	PODNAME="${POD_BASENAME}_${VERSION}"
 	podman pod exists "${PODNAME}" || podman pod create \
 		--publish 127.0.0.1:${PORTNUMBER_BASE}36:${PORTNUMBER_BASE}36	\
 		--publish 127.0.0.1:${PORTNUMBER_BASE}80:80	\

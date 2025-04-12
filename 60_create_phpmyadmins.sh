@@ -5,14 +5,14 @@ set -o pipefail
 source local.config || ( echo "ERROR, create a local.config file from default.config" ; exit 1 )
 
 function create_phpmyadmin {
-	IMAGE_VERSION=$1
-	if [[ "develop" == "${IMAGE_VERSION}" ]]; then
+	VERSION=$1
+	if [[ "develop" == "${VERSION}" ]]; then
 		PORTNUMBER_BASE=80
 	else
-		PORTNUMBER_BASE=$( echo "${IMAGE_VERSION}" | tr -c -d "[:digit:]" )
+		PORTNUMBER_BASE=$( echo "${VERSION}" | tr -c -d "[:digit:]" )
 	fi
-	PODNAME="${POD_BASENAME}_${IMAGE_VERSION}"
-	CONTAINER_NAME="${PHPMYADMIN_BASENAME}_${IMAGE_VERSION}"
+	PODNAME="${POD_BASENAME}_${VERSION}"
+	CONTAINER_NAME="${PHPMYADMIN_BASENAME}_${VERSION}"
 	SECRET_ROOT_pass="${SECRET_ROOT_BASE}_${VERSION}"
 
 	podman container exists ${CONTAINER_NAME} || podman create \
