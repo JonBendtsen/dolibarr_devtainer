@@ -51,7 +51,7 @@ you could also just run it as a separate unit.
 
 #### what is the xxx?
 The xxx is dependent on which version of Dolibarr you want to run:
-* development has xxx = 100 so ports become 10036, 10080 and so on
+* development has xxx = 80 so ports become 8036, 8080 and so on
 * Dolibarr version 21.0 has xxx = 210
 * version 20 has xxx = 200
 * and so on

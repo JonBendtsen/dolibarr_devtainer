@@ -7,7 +7,7 @@ source local.config || ( echo "ERROR, create a local.config file from default.co
 function create_pod {
 	IMAGE_VERSION=$1
 	if [[ "develop" == "${IMAGE_VERSION}" ]]; then
-		PORTNUMBER_BASE=100
+		PORTNUMBER_BASE=80
 	else
 		PORTNUMBER_BASE=$( echo "${IMAGE_VERSION}" | tr -c -d "[:digit:]" )
 	fi
