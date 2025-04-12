@@ -12,7 +12,7 @@ function create_dolibarr {
 	SECRET_DOLI_pass="${SECRET_DOLI_BASE}_${VERSION}"
 	IMAGE_VERSION=$( echo "${VERSION}" | cut -d"." -f1 )
 	if [[ "develop" == "${IMAGE_VERSION}" ]]; then
-		PORTNUMBER_BASE=100
+		PORTNUMBER_BASE=80
 	else
 		PORTNUMBER_BASE=$( echo "${IMAGE_VERSION}" | tr -c -d "[:digit:]" )
 	fi
