@@ -54,6 +54,8 @@ function create_dolibarr {
 		--volume dolibarr_custom_${VERSION}:/var/www/html/custom:rw \
 		--volume dolibarr_theme_${VERSION}:/var/www/html/theme:rw \
 		--volume dolibarr_docs_${VERSION}:/var/www/documents:rw \
+		--volume dolibarr_api_${VERSION}:/var/www/documents/api:rw \
+		--volume dolibarr_api_temp_${VERSION}:/var/www/documents/api/temp:rw \
 		${IMAGE_REGISTRY}/dolibarr/dolibarr:${IMAGE_VERSION}
 }
 
