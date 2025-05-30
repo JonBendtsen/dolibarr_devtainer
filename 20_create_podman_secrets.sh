@@ -10,13 +10,13 @@ function create_secrets {
     TOP_SECRET=$(${RNG}) podman secret create --env=true $1 TOP_SECRET
 }
 
-VOL_ERR="ERROR, you can not create a new podman secret and use it for an existing mariadb podman volume because the passwords will then mismatch, you will have to DELETE this mariadb volume and thus all the data in it. BE CAREFUL!"
+VOL_ERR="you can not create a new podman secret and use it for an existing mariadb podman volume because the passwords will then mismatch, you will have to DELETE this mariadb volume and thus all the data in it. BE CAREFUL!"
 for VERSION in ${ACTIVE_VERSIONS}; do
     VOLUME_NAME="mariadb_${VERSION}"
     podman volume exists "${VOLUME_NAME}"
     CHECK_VOLUME=$?
     if [[ 0 -eq ${CHECK_VOLUME} ]]; then
-        echo "${VOL_ERR} - "${VOLUME_NAME}"" 
+        echo "Warning! '${VOLUME_NAME}' - ${VOL_ERR}"
         continue
     fi
 
