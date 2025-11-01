@@ -13,17 +13,17 @@ function create_pod {
 	fi
 	PODNAME="${POD_BASENAME}_${VERSION}"
 	podman pod exists "${PODNAME}" || podman pod create \
-		--publish 127.0.0.1:${PORTNUMBER_BASE}36:${PORTNUMBER_BASE}36	\
-		--publish 127.0.0.1:${PORTNUMBER_BASE}80:80	\
-		--publish 127.0.0.1:${PORTNUMBER_BASE}81:81	\
-		--publish 127.0.0.1:${PORTNUMBER_BASE}82:82	\
-		--publish 127.0.0.1:${PORTNUMBER_BASE}83:83	\
-		--publish 127.0.0.1:${PORTNUMBER_BASE}84:84	\
-		--publish 127.0.0.1:${PORTNUMBER_BASE}85:85	\
-		--publish 127.0.0.1:${PORTNUMBER_BASE}86:86	\
-		--publish 127.0.0.1:${PORTNUMBER_BASE}87:87	\
-		--publish 127.0.0.1:${PORTNUMBER_BASE}88:88	\
-		--publish 127.0.0.1:${PORTNUMBER_BASE}89:89	\
+		--publish ${PUBLISH_IPv4}:${PORTNUMBER_BASE}36:${PORTNUMBER_BASE}36	\
+		--publish ${PUBLISH_IPv4}:${PORTNUMBER_BASE}80:80	\
+		--publish ${PUBLISH_IPv4}:${PORTNUMBER_BASE}81:81	\
+		--publish ${PUBLISH_IPv4}:${PORTNUMBER_BASE}82:82	\
+		--publish ${PUBLISH_IPv4}:${PORTNUMBER_BASE}83:83	\
+		--publish ${PUBLISH_IPv4}:${PORTNUMBER_BASE}84:84	\
+		--publish ${PUBLISH_IPv4}:${PORTNUMBER_BASE}85:85	\
+		--publish ${PUBLISH_IPv4}:${PORTNUMBER_BASE}86:86	\
+		--publish ${PUBLISH_IPv4}:${PORTNUMBER_BASE}87:87	\
+		--publish ${PUBLISH_IPv4}:${PORTNUMBER_BASE}88:88	\
+		--publish ${PUBLISH_IPv4}:${PORTNUMBER_BASE}89:89	\
 		--add-host=dolibarr:127.0.0.1	\
 		--add-host=mariadb:127.0.0.1	\
 		--add-host=phpmyadmin:127.0.0.1	\
