@@ -2,9 +2,10 @@
 
 set -e
 set -o pipefail
-source local.config || ( echo "ERROR, create a local.config file from default.config" ; exit 1 )
+source demo.config || ( echo "ERROR, create a demo.config file from default.config" ; exit 1 )
 
-SRC_CFG="local.config"
+ACTIVE_VERSIONS="${DEMO_VERSIONS}"
+SRC_CFG="demo.config"
 
 ./10_pull_container_images.sh ${SRC_CFG} && \
 ./20_create_podman_secrets.sh ${SRC_CFG} && \

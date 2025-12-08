@@ -1,8 +1,9 @@
 #!/bin/bash
+SRC_CFG="$1"
 
 # set -e # deliberately
 set -o pipefail
-source local.config || ( echo "ERROR, create a local.config file from default.config" ; exit 1 )
+source ${SRC_CFG}
 
 RNG="openssl rand -hex 16"
 
@@ -12,7 +13,7 @@ function create_secrets {
 
 VOL_ERR="you can not create a new podman secret and use it for an existing mariadb podman volume because the passwords will then mismatch, you will have to DELETE this mariadb volume and thus all the data in it. BE CAREFUL!"
 for VERSION in ${ACTIVE_VERSIONS}; do
-    VOLUME_NAME="mariadb_${VERSION}"
+    VOLUME_NAME="${MARIADB_BASENAME}_${VERSION}"
     podman volume exists "${VOLUME_NAME}"
     CHECK_VOLUME=$?
     if [[ 0 -eq ${CHECK_VOLUME} ]]; then
@@ -27,6 +28,17 @@ for VERSION in ${ACTIVE_VERSIONS}; do
     SECRET_DOLI_pass="${SECRET_DOLI_BASE}_${VERSION}"
     podman secret exists "${SECRET_DOLI_pass}" \
         || create_secrets ${SECRET_DOLI_pass}
+
+    if [[ -z ${DEMO_VERSIONS+x} ]]; then
+        true
+    else
+        SECRET_ADMi_pass="${SECRET_ADMi_BASE}_${VERSION}"
+        podman secret exists "${SECRET_ADMi_pass}" \
+            || create_secrets ${SECRET_ADMi_pass}
+        SECRET_CRON_KEY="${SECRET_CRON_KEY_BASE}_${VERSION}"
+        podman secret exists "${SECRET_CRON_KEY}" \
+            || create_secrets ${SECRET_CRON_KEY}
+    fi
 done
 
 podman secret ls

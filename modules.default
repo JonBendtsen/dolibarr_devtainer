@@ -1,0 +1,2 @@
+DOLI_MODULES="Commande,Accounting,Api,Product,User,Propale,Facture,Tax,Variants,Stripe,Syslog,Societe,ExpenseReport,Mailing"
+

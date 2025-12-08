@@ -103,10 +103,11 @@ phpmyadmin container and the doliuser password used by mariadb and dolibarr.
 # Usage
 1. Clone this repo
 2. copy default.config to local.config and make the necessary changes
-3. run ./first_setup_git_repo_and_worktree.sh
-4. run ./second_create_podman_setup.sh
-5. run ./third_start_podman_setup.sh
-6. direct your browser to each dolibarr installation that you configured in ${ACTIVE_VERSIONS}
+3. copy the file `modules.default` to `dolibarr_modules_${VERSION}.csv`
+4. run ./first_setup_git_repo_and_worktree.sh
+5. run ./second_create_podman_setup.sh
+6. run ./third_start_podman_setup.sh
+7. direct your browser to each dolibarr installation that you configured in ${ACTIVE_VERSIONS}
 
 ## Recommendations
 Here's some recomendations for using podman containers.

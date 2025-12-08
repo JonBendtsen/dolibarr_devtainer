@@ -1,8 +1,10 @@
 #!/bin/bash
 
+SRC_CFG="$1"
+
 set -e
 set -o pipefail
-source local.config || ( echo "ERROR, create a local.config file from default.config" ; exit 1 )
+source ${SRC_CFG}
 
 for VERSION in ${ACTIVE_VERSIONS}; do
 	PODNAME="${POD_BASENAME}_${VERSION}"
